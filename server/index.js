@@ -3,7 +3,8 @@ const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 const fs = require('fs');
-const { endpoint } = require('../src/helpers/endpoint');
+
+const endpoint = 'https://yd8n77wr9i.execute-api.us-west-2.amazonaws.com/prod';
 
 // static resources should just be served as they are
 app.use(express.static(
