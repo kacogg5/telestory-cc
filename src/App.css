@@ -309,7 +309,7 @@ textarea:focus {
     width: min(400px, 96vw);
   }
 
-  .art-canvas, .page-image-view {
+  .art-canvas, canvas, .page-image-view {
     width: min(400px, 96vw);
     height: min(300px, 72vw);
   }
