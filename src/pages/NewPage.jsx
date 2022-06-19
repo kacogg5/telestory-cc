@@ -157,7 +157,7 @@ function NewPage({ storyId }) {
       <textarea
         className="page-text"
         rows={3}
-        placeholder={"How's it start?"}
+        placeholder={"What happens?"}
         onChange={(e) => setPageText(e.target.value)}
       />
       <EditCanvas canvasRef={canvasRef}/>

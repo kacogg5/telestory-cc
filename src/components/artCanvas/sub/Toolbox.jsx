@@ -28,10 +28,13 @@ function Toolbox({brushState, brushDispatch}) {
   )}, [brushDispatch]);
 
   const onMouseMoveSlider = useCallback((e) => {
-    if (dragging){
+    let eventX = e.type === "touchmove" || e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+    let eventY = e.type === "touchmove" || e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
+
+    if (dragging || e.type === "touchmove") {
       const size = Math.max(3,
         Math.min(
-          Math.round((103 - (isVertical ? e.clientX : e.clientY) + top) / 100 * 27 + 3),
+          Math.round((103 - (isVertical ? eventX : eventY) + top) / 100 * 27 + 3),
           30,
         ),
       );
@@ -83,9 +86,13 @@ function Toolbox({brushState, brushDispatch}) {
         <div
           className="slider-container"
           onMouseDown={onMouseDownSlider}
+          onTouchStart={onMouseDownSlider}
           onMouseMove={onMouseMoveSlider}
+          onTouchMove={onMouseMoveSlider}
           onMouseUp={onMouseUpSlider}
+          onTouchEnd={onMouseUpSlider}
           onMouseLeave={onMouseUpSlider}
+          onTouchCancel={onMouseUpSlider}
         >
           <div className="slider" ref={ref}>
             <div

@@ -130,7 +130,7 @@ function ViewPage({ storyId, pageNum }) {
         alt="Your drawing here"/>
       { newPage ? (
         <div className="backdrop share-section">
-          <p>Great! Now send this link to a friend to continue the story!</p>
+          <div style={{margin: "0 6px 6px 6px"}}>Great! Now send this link to a friend to continue the story!</div>
           <div className="share-link">
             <p>{window.location.toString()}</p>
             <img className="copy-button" src={"/copy.png"} alt="Copy" onClick={onClickCopy}/>
@@ -150,7 +150,7 @@ function ViewPage({ storyId, pageNum }) {
           )}
           { !nextFinished ? (
             <>
-              <div style={{fontSize: 20, color: "#a29faabb", alignSelf: 'center'}}>
+              <div className='whn-prompt'>
                 What happens next?
               </div>
               <div
