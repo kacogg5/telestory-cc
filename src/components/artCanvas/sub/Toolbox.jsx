@@ -3,14 +3,15 @@ import { BrushType } from "../../../models/artTool";
 
 function Toolbox({brushState, brushDispatch}) {
   const ref = useRef();
+  const isVertical = window.matchMedia('(max-width: 700px)').matches;
   const [top, setTop] = useState(0);
   const [dragging, setDragging] = useState(false);
 
   useEffect(() => {
     const slider = ref.current;
-    var { top } = slider.getBoundingClientRect();
-    setTop(top);
-  }, []);
+    var { top, left } = slider.getBoundingClientRect();
+    setTop(isVertical ? left : top);
+  }, [isVertical]);
 
   const onClickBrush = useCallback(() => {
     brushDispatch({
@@ -28,13 +29,18 @@ function Toolbox({brushState, brushDispatch}) {
 
   const onMouseMoveSlider = useCallback((e) => {
     if (dragging){
-      const size = Math.max(3, Math.min(Math.round((103 - e.clientY + top) / 100 * 27 + 3), 30));
+      const size = Math.max(3,
+        Math.min(
+          Math.round((103 - (isVertical ? e.clientX : e.clientY) + top) / 100 * 27 + 3),
+          30,
+        ),
+      );
       brushDispatch({
         type: "setBrushSize",
         payload: size,
       });
     }
-  }, [brushDispatch, top, dragging]);
+  }, [brushDispatch, isVertical, top, dragging]);
 
   const onMouseDownSlider = useCallback((e) => {
     setDragging(true);
@@ -84,7 +90,11 @@ function Toolbox({brushState, brushDispatch}) {
           <div className="slider" ref={ref}>
             <div
               className="slider-thumb"
-              style={{ bottom: 100 * (brushState.brushSize - 3) / 27, }}
+              style={isVertical ? {
+                right: 100 * (brushState.brushSize - 3) / 27,
+              } : {
+                bottom: 100 * (brushState.brushSize - 3) / 27,
+              }}
             />
           </div>
         </div>

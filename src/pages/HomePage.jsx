@@ -7,13 +7,12 @@ function HomePage() {
 
   return (
     <div
-      className="common-grid"
-      style={{ width: 600 }}
+      className="common-grid home-page"
     >
-      <div className="story-title-view" style={{ width: 650 }}>
+      <div className="story-title-view">
         Telestory
       </div>
-      <div style={{display: "grid", gridTemplateColumns: "1fr auto", gap: 6}}>
+      <div className="home-desc">
         <div className="home-page-text-box backdrop">
           <div>
             Welcome to Telestory!
