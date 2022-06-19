@@ -66,8 +66,11 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
     <div
       className="art-canvas"
       onMouseMove={onMouseMove}
+      onTouchMove={onMouseMove}
       onMouseEnter={onMouseEnter}
+      onTouchStart={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onTouchEnd={onMouseLeave}
     >
       <canvas ref={ref} height={300} width={400} />
       <svg

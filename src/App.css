@@ -23,6 +23,12 @@
   border-radius: 12px;
 }
 
+.home-desc {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6
+}
+
 textarea, .story-title-view, .page-text-view {
   background-color: #eeeeeebb;
   resize: none;
@@ -70,8 +76,9 @@ textarea:focus {
 }
 
 .edit-canvas {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-areas: 
+    "cp cc ct";
   place-content: center;
   gap: 6px;
 }
@@ -131,6 +138,8 @@ textarea:focus {
 }
 
 .art-canvas {
+  grid-area: cc;
+
   width: 400px;
   height: 300px;
   border-radius: 12px;
@@ -155,12 +164,16 @@ textarea:focus {
 }
 
 .palette {
+  grid-area: cp;
+
   display: grid;
   grid-template-columns: auto auto;
   gap: 6px;
 }
 
 .toolbox {
+  grid-area: ct;
+
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
@@ -234,4 +247,97 @@ textarea:focus {
 
 .preview-fill {
   border-radius: 50%;
+}
+
+@media (max-width: 700px) {
+  .common-grid {
+    display: grid;
+    gap: 6px;
+    margin: 12px;
+  }
+
+  .home-desc {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 6px;
+  }
+
+  .story-title-view {
+    max-width: 400px;
+  }
+
+  .page-text-view {
+    width: 400px;
+  }
+
+  .share-section {
+    font-size: 14px;
+  }
+
+  .home-page-text-box {
+    max-width: 400px;
+  }
+
+  .edit-canvas {
+    grid-template-areas: 
+      "cc"
+      "cp"
+      "ct";
+  }
+
+  .palette {
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: auto auto;
+  }
+
+  .toolbox {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto;
+  }
+
+  .toolbox > * {
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  hr {
+    display: none;
+  }
+  
+  .color-option, .toolbox-button {
+    width: unset;
+    height: 25px;
+    position: relative;
+    border-radius: 6px;
+  }
+
+  .slider-container {
+    margin: auto 0;
+    width: unset;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .slider {
+    margin: auto;
+    height: 4px;
+    width: 106px;
+
+    flex-direction: row-reverse;
+  }
+
+  .slider-thumb {
+    left: unset;
+    top: -10px;
+    width: 6px;
+    height: 24px;
+    border-radius: 3px;
+    background-color: black;
+  }
 }
