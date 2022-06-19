@@ -15,9 +15,10 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
   useEffect(() => {
     const canvas = ref.current
     if (canvasRef) canvasRef.current = ref.current;
-
     setContext(canvas.getContext('2d'));
-    var {offsetWidth, offsetHeight} = ref.current.getBoundingClientRect();
+    var {offsetWidth, offsetHeight} = ref.current;
+
+    console.log(offsetWidth, offsetHeight);
     if (context) {
       context.fillStyle = "#eeeeee";
       context.fillRect(0, 0, offsetWidth, offsetHeight);
@@ -78,7 +79,7 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
       onMouseLeave={onMouseLeave}
       onTouchEnd={onMouseLeave}
     >
-      <canvas ref={ref} height={300} width={400} />
+      <canvas ref={ref} height={Math.min(300, window.innerWidth * 0.72)} width={Math.min(400, window.innerWidth * 0.96)} />
       <svg
         className='canvas-cursor'
         style={{
