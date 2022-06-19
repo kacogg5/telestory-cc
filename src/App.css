@@ -102,7 +102,7 @@ textarea:focus {
 }
 
 .share-section {
-  line-height: 0;
+  line-height: 16px;
 }
 
 .share-link {
@@ -120,6 +120,13 @@ textarea:focus {
   flex: 1;
   text-align: left;
   text-align-last: left;
+  text-overflow: ellipsis;
+}
+
+.whn-prompt {
+  font-size: 20px;
+  color: #a29faabb;
+  align-self: center;
 }
 
 .copy-button {
@@ -145,6 +152,7 @@ textarea:focus {
   border-radius: 12px;
   overflow: hidden;
   cursor: none;
+  touch-action: none;
 }
 
 .bottom-button {
@@ -197,6 +205,7 @@ textarea:focus {
 
 .slider-container {
   width: 28px;
+  touch-action: none;
 }
 
 .preview {
@@ -263,19 +272,32 @@ textarea:focus {
   }
 
   .story-title-view {
-    max-width: 400px;
+    max-width: min(400px, 96vw);
   }
 
   .page-text-view {
-    width: 400px;
+    width: min(400px, 96vw);
   }
 
   .share-section {
     font-size: 14px;
+    line-height: 18px;
+    width: calc(min(400px, 96vw) - 12px);
+  }
+
+  .share-link p {
+    max-width: calc(min(400px, 96vw) - 48px);
+    text-overflow: ellipsis;
+  }
+
+  .whn-prompt {
+    font-size: 18px;
+    color: #a29faabb;
+    align-self: center;
   }
 
   .home-page-text-box {
-    max-width: 400px;
+    max-width: min(400px, 96vw);
   }
 
   .edit-canvas {
@@ -283,6 +305,13 @@ textarea:focus {
       "cc"
       "cp"
       "ct";
+    
+    width: min(400px, 96vw);
+  }
+
+  .art-canvas, .page-image-view {
+    width: min(400px, 96vw);
+    height: min(300px, 72vw);
   }
 
   .palette {
@@ -339,5 +368,17 @@ textarea:focus {
     height: 24px;
     border-radius: 3px;
     background-color: black;
+  }
+
+  .bottom-button {
+    font-size: 20px;
+  }
+
+  .react-confirm-alert {
+    width: min(400px, 96vw);
+  }
+
+  .react-confirm-alert-body {
+    width: unset !important;
   }
 }

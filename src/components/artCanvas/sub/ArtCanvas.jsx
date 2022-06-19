@@ -15,25 +15,26 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
   useEffect(() => {
     const canvas = ref.current
     if (canvasRef) canvasRef.current = ref.current;
+
     setContext(canvas.getContext('2d'));
+    var {offsetWidth, offsetHeight} = ref.current.getBoundingClientRect();
     if (context) {
       context.fillStyle = "#eeeeee";
-      context.fillRect(0, 0, 400, 300);
+      context.fillRect(0, 0, offsetWidth, offsetHeight);
     }
   }, [canvasRef, context]);
 
-  const onMouseEnter = useCallback(() => {
-    setCursorVisibility("unset");
-  }, [setCursorVisibility]);
-
   const onMouseMove = useCallback((e) => {
-    setPosX(e.clientX - brushSize / 2);
-    setPosY(e.clientY - brushSize / 2);
+    let eventX = e.type === "touchmove" || e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+    let eventY = e.type === "touchmove" || e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
+
+    setPosX(eventX - brushSize / 2);
+    setPosY(eventY - brushSize / 2);
 
     var {left: offsetX, top: offsetY} = ref.current.getBoundingClientRect();
     var flags = e.buttons !== undefined ? e.buttons : e.which;
     var primaryMouseButtonDown = (flags & 1) === 1;
-    if (primaryMouseButtonDown) {
+    if (primaryMouseButtonDown || e.type === "touchmove") {
       context.fillStyle = context.strokeStyle = brushState.brushType === BrushType.brush
         ? brushState.brushColor
         : "#eeeeee";
@@ -57,6 +58,11 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
       setLast(false);
     }
   }, [context, posX, posY, last, lastX, lastY, brushSize, brushState]);
+
+  const onMouseEnter = useCallback((e) => {
+    setCursorVisibility("unset");
+    onMouseMove(e);
+  }, [setCursorVisibility, onMouseMove]);
 
   const onMouseLeave = useCallback(() => {
     setCursorVisibility("none");
