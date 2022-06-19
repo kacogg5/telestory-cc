@@ -15,8 +15,10 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
   useEffect(() => {
     const canvas = ref.current
     if (canvasRef) canvasRef.current = ref.current;
-    setContext(canvas.getContext('2d'));
-    var {offsetWidth, offsetHeight} = ref.current;
+    if (ref.current) {
+      setContext(ref.current.getContext('2d'));
+      var {offsetWidth, offsetHeight} = ref.current;
+    }
 
     console.log(offsetWidth, offsetHeight);
     if (context) {
