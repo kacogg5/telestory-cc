@@ -1,21 +1,26 @@
 {
-  "short_name": "React App",
+  "short_name": "Tel a Story",
   "name": "Create React App Sample",
   "icons": [
+    {
+      "src": "eraser.png",
+      "type": "image/png",
+      "sizes": "50x50"
+    },
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "pencil.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "50x50"
     },
     {
-      "src": "logo512.png",
+      "src": "copy.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "24x24"
     }
   ],
   "start_url": ".",

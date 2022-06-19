@@ -1,38 +1,237 @@
-.App {
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.common-grid {
+  display: grid;
+  width: min-content;
+  gap: 6px;
+  margin: 12px;
+}
+
+.center {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  text-align: justify;
+  text-align-last: center;
+}
+
+.backdrop {
+  padding: 6px;
+  background-color: #eeeeeebb;
+  border-radius: 12px;
+}
+
+textarea, .story-title-view, .page-text-view {
+  background-color: #eeeeeebb;
+  resize: none;
+  border: none;
   text-align: center;
+  border-radius: 12px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+textarea:focus {
+  border: none;
+  outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.story-title {
+  font-size: 24px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.story-title-view {
+  width: 500px;
+  min-height: 32px;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.page-text {
+  font-size: 18px;
+}
+
+.home-page-text-box {
+  font-size: 16px;
+  max-height: 300px;
+
+  display: grid;
+  place-content: center;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: 6px;
+  padding: 6px;
+}
+
+.page-text-view {
+  font-size: 18px;
+  line-height: 22px;
+  width: 500px;
+  min-height: 67px;
+}
+
+.edit-canvas {
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  gap: 6px;
+}
+
+.page-image-view {
+  width: 400px;
+  height: 300px;
+  border-radius: 12px;
+  background-color: #eeeeeebb;
+  justify-self: center;
+}
+
+.submit-row {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.submit-row > * {
+  flex: 1;
+}
+
+.share-section {
+  line-height: 0;
+}
+
+.share-link {
+  background-color: #eeeeee;
+  border-radius: 12px;
+  padding: 0 0 0 12px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+}
+
+.share-link p {
+  flex: 1;
+  text-align: left;
+  text-align-last: left;
+}
+
+.copy-button {
+  height: 24px;
+  width: 24px;
+  background-color: #eeeeee;
+  padding: 6px;
+}
+
+.copy-button:hover {
+  background-color: #dddddd;
+}
+
+.copy-button:active {
+  background-color: #bbbbbb;
+}
+
+.art-canvas {
+  width: 400px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: none;
+}
+
+.bottom-button {
+  border-radius: 12px;
+  cursor: pointer;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+
+  font-size: 24px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #eeeeee;
+}
+
+.bottom-button:active {
+  border-bottom-width: 2px;
+  margin-top: 2px;
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 6px;
+}
+
+.toolbox {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.toolbox > * {
   display: flex;
   flex-direction: column;
+  place-content: center;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.color-option, .toolbox-button {
+  width: 25px;
+  position: relative;
+  border-radius: 6px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.color-option {
+  box-shadow: inset 0 0 3px #303030;
+}
+
+.slider-container {
+  width: 28px;
+}
+
+.preview {
+  margin: 3px 0;
+  height: 30px;
+  width: 30px;
+  outline: 1px solid black;
+  background-color: #505050bb;
+  border-radius: 50%;
+
+  display: grid;
+  place-content: center;
+}
+
+.slider {
+  margin: 3px auto;
+  height: 106px;
+  width: 4px;
+  background-color: #606060;
+  border-radius: 2px;
+
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.toolbox-button {
+  height: 25px;
+  padding: 2px;
+  background-color: #eeeeeebb;
+}
+
+.color-option:hover, .toolbox-button:hover, .toolbox-button.selected {
+  filter: brightness(0.8);
+}
+
+.color-option.selected {
+  outline: 2px solid #38a1e3;
+}
+
+.slider-thumb {
+  position: relative;
+  left: -10px;
+  height: 6px;
+  width: 24px;
+  border-radius: 3px;
+  background-color: black;
+}
+
+.preview-fill {
+  border-radius: 50%;
 }
