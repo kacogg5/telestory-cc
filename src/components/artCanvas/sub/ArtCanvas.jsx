@@ -13,7 +13,6 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
   const [cursorVisibility, setCursorVisibility] = useState("none");
 
   useEffect(() => {
-    const canvas = ref.current
     if (canvasRef) canvasRef.current = ref.current;
     if (ref.current) {
       setContext(ref.current.getContext('2d'));
