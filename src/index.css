@@ -6,6 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  max-height: 100vh;
+  overflow: hidden;
+
   background-color: #38a1e3;
   user-select: none;
 }

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { BrushType } from '../../../models/artTool';
 
 function ArtCanvas({brushState, brushDispatch, canvasRef}) {
@@ -19,7 +19,6 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
       var {offsetWidth, offsetHeight} = ref.current;
     }
 
-    console.log(offsetWidth, offsetHeight);
     if (context) {
       context.fillStyle = "#eeeeee";
       context.fillRect(0, 0, offsetWidth, offsetHeight);
@@ -30,10 +29,12 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
     let eventX = e.type === "touchmove" || e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
     let eventY = e.type === "touchmove" || e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
 
-    setPosX(eventX - brushSize / 2);
-    setPosY(eventY - brushSize / 2);
-
-    var {left: offsetX, top: offsetY} = ref.current.getBoundingClientRect();
+    setPosX(eventX + window.scrollX - brushSize / 2);
+    setPosY(eventY + window.scrollY - brushSize / 2);
+    
+    var {left, top} = ref.current.getBoundingClientRect();
+    var offsetX = left + window.scrollX;
+    var offsetY = top + window.scrollY;
     var flags = e.buttons !== undefined ? e.buttons : e.which;
     var primaryMouseButtonDown = (flags & 1) === 1;
     if (primaryMouseButtonDown || e.type === "touchmove") {
@@ -80,7 +81,13 @@ function ArtCanvas({brushState, brushDispatch, canvasRef}) {
       onMouseLeave={onMouseLeave}
       onTouchEnd={onMouseLeave}
     >
-      <canvas ref={ref} height={Math.min(300, window.innerWidth * 0.72)} width={Math.min(400, window.innerWidth * 0.96)} />
+      {
+        useMemo(() => <canvas
+          ref={ref}
+          height={Math.min(300, window.innerWidth * 0.72)}
+          width={Math.min(400, window.innerWidth * 0.96)}
+        />, [])
+      }
       <svg
         className='canvas-cursor'
         style={{
