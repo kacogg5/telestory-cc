@@ -87,7 +87,7 @@ function ViewPage({ storyId, pageNum }) {
         });
 
         sessionStorage.setItem("newRedirect", "true");
-        window.location.href = `/p/${storyId}/s/new`;
+        window.location.href = `/s/${storyId}/p/new`;
       } else {
         confirmAlert({
           title: 'Oops!',

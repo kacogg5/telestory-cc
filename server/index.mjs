@@ -1,14 +1,16 @@
-const express = require('express');
+import fetch from "node-fetch";
+import express from "express";
+import path from "path";
+import fs from "fs";
+
 const app = express();
-const path = require('path');
 const PORT = process.env.PORT || 3000;
-const fs = require('fs');
 
 const endpoint = 'https://yd8n77wr9i.execute-api.us-west-2.amazonaws.com/prod';
 
 // static resources should just be served as they are
 app.use(express.static(
-    path.resolve(__dirname, '..', 'build'),
+    path.resolve('..', 'build'),
     { maxAge: '30d' },
 ));
 
@@ -19,14 +21,13 @@ app.listen(PORT, (error) => {
   console.log("listening on " + PORT + "...");
 });
 
-const indexPath  = path.resolve(__dirname, '..', 'build', 'index.html');
+const indexPath  = path.resolve('..', 'build', 'index.html');
 app.get('/*', async (req, res, next) => {
   const pathVariables = req.path.split(/[\\/]/g);
   const [, _s, storyId, _p, pageNum] = pathVariables;
 
   let title;
   let description;
-  let cardDescription;
   let cardImage;
 
   if (_s !== 's' || storyId === undefined || storyId === 'new') {
