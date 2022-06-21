@@ -87,8 +87,7 @@ textarea:focus {
   width: 400px;
   height: 300px;
   border-radius: 12px;
-  background-color: #eeeeeebb;
-  justify-self: center;
+  background-color: #ccccccbb;
 }
 
 .submit-row {
