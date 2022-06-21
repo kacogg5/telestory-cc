@@ -10,7 +10,7 @@ const endpoint = 'https://yd8n77wr9i.execute-api.us-west-2.amazonaws.com/prod';
 
 // static resources should just be served as they are
 app.use(express.static(
-    path.resolve('..', 'build'),
+    path.resolve('build'),
     { maxAge: '30d' },
 ));
 
@@ -21,7 +21,7 @@ app.listen(PORT, (error) => {
   console.log("listening on " + PORT + "...");
 });
 
-const indexPath  = path.resolve('..', 'build', 'index.html');
+const indexPath  = path.resolve('build', 'index.html');
 app.get('/*', async (req, res, next) => {
   const pathVariables = req.path.split(/[\\/]/g);
   const [, _s, storyId, _p, pageNum] = pathVariables;
