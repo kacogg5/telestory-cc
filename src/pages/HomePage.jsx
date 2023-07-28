@@ -36,7 +36,8 @@ function HomePage() {
         <img
           className="page-image-view"
           src="https://d3qdh8xs6uy3k8.cloudfront.net/jKm3hBl5Id-1.png"
-          alt="Your drawing here"/>
+          alt="Your drawing here"
+        />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 * {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .common-grid {
@@ -7,6 +7,7 @@
   width: min-content;
   gap: 6px;
   margin: 12px;
+  background-color: #38a1e3;
 }
 
 .center {
@@ -161,7 +162,7 @@ textarea:focus {
   border-bottom-style: solid;
 
   font-size: 24px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #eeeeee;
 }
 
