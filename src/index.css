@@ -10,6 +10,8 @@ body {
   overflow: hidden;
 
   background-color: #38a1e3;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='250' height='110' viewBox='0 0 250 110' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3ctext x='30' y='70' fill='%2330303060' font-family='arial' font-weight='bold' font-size='20pt' transform='rotate(-13)' %3eTel A Story%3c/text%3e%3ctext x='80' y='122' fill='%23f0f0f060' font-family='arial' font-weight='bold' font-size='20pt' transform='rotate(-13)' %3eTel A Story%3c/text%3e%3c/svg%3e ");
+  background-position: center top;
   user-select: none;
 }
 
